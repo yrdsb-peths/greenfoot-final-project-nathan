@@ -34,28 +34,41 @@ public class MyWorld extends World
         
         /*for (int i = 0; i<5;i++)
         {
-          spawnPlate(i*104+90, 64);
+          spawnPlate(i*104+90, 2*32);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 156);
+            spawnPlate(i*104+90, 5*32);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 250);
+            spawnPlate(i*104+90, 8*32);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 350);
+            spawnPlate(i*104+90, 11*32);
         }
         */
     }
     public void spawnMine()
     {
         Mine mine = new Mine("BOOM", 20);
-        int x = (Greenfoot.getRandomNumber(5)+1)*104;
-        int y = (Greenfoot.getRandomNumber(5)+1)*64;
+        int x = (Greenfoot.getRandomNumber(5)+1)*104+90;
+        int y = ((Greenfoot.getRandomNumber(5)+1)*64)+32;
         addObject(mine, x, y);
+        spawnPlate(x,y);
+    }
+    public void spawndigit(int x,int y)
+    {
+        mine0 zero = new mine0(" ",0);
+        addObject(zero, x, y);
+    }
+    public void spawnnum()
+    {
+        for (int i = 0; i<5;i++)
+        {
+            spawndigit(i*104+90,64);
+        }
     }
     public void spawnPlate(int x, int y)
     {
