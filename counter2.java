@@ -124,4 +124,20 @@ public class counter2 extends Actor
                         (image.getHeight()-text.getHeight())/2);
         setImage(image);
     }
+    public void clickedon()
+    {
+        if (Greenfoot.mouseClicked(counter2.class))
+        {
+            MyWorld world = (MyWorld) getWorld();
+            if(isTouching(Mine.class))
+            {
+                world.gameOver();
+            }
+            if(isTouching(Label.class))
+            {
+                removeTouching(counter2.class);
+            }
+        }
+    }
+    
 }
