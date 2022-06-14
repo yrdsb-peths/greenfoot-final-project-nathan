@@ -91,4 +91,12 @@ public class mine0 extends Actor
     {
         setImage(new GreenfootImage(value, fontSize, fillColor, transparent, lineColor));
     }
+    public void checkmine()
+    {
+        if(isTouching(Mine.class))
+        {
+            MyWorld world = (MyWorld) getWorld();
+            world.removeObject(this);
+        }
+    }
 }

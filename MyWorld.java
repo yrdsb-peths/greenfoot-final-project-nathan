@@ -16,7 +16,7 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1); 
+        super(600, 600, 1); 
         int[] xarr = {(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104};
         int[] yarr = {(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64};
         Counter one = new Counter("1");
@@ -31,36 +31,44 @@ public class MyWorld extends World
         spawnMine();
         spawnMine();
         spawnMine();
-        
-        /*for (int i = 0; i<5;i++)
+        /*
+        for (int i = 0; i<5;i++)
         {
-          spawnPlate(i*104+90, 2*32);
+            spawnPlate(i*104+90, 90);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 5*32);
+            spawnPlate(i*104+90, 194);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 8*32);
+            spawnPlate(i*104+90, 298);
         }
         for (int i = 0; i<5;i++)
         {
-            spawnPlate(i*104+90, 11*32);
+            spawnPlate(i*104+90, 402);
+        }
+        for (int i = 0; i<5;i++)
+        {
+            spawnPlate(i*104+90, 506);
         }
         */
+        for (int i=0;i<5;i++)
+        {
+            spawndigit(i*104+90, 90);
+        }
     }
     public void spawnMine()
     {
         Mine mine = new Mine("BOOM", 20);
-        int x = (Greenfoot.getRandomNumber(5)+1)*104+90;
-        int y = ((Greenfoot.getRandomNumber(5)+1)*64)+32;
+        int x = (Greenfoot.getRandomNumber(5))*104+90;
+        int y = (Greenfoot.getRandomNumber(5))*104+90;
         addObject(mine, x, y);
-        spawnPlate(x,y);
     }
     public void spawndigit(int x,int y)
     {
         mine0 zero = new mine0(" ",0);
+        zero.checkmine();
         addObject(zero, x, y);
     }
     public void spawnnum()
@@ -80,4 +88,5 @@ public class MyWorld extends World
         Label gameOverLabel = new Label("Game Over", 100);
         addObject(gameOverLabel, 300, 200);
     }
+    
 }

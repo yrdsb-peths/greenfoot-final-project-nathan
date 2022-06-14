@@ -68,6 +68,7 @@ public class counter2 extends Actor
             value--;
             updateImage();
         }
+        clickedon();
     }
 
     /**
@@ -126,18 +127,19 @@ public class counter2 extends Actor
     }
     public void clickedon()
     {
+        boolean result = false;
+        MyWorld world = (MyWorld) getWorld();
         if (Greenfoot.mouseClicked(counter2.class))
         {
-            MyWorld world = (MyWorld) getWorld();
             if(isTouching(Mine.class))
             {
                 world.gameOver();
             }
-            if(isTouching(Label.class))
+            if(isTouching(mine0.class))
             {
                 removeTouching(counter2.class);
+                world.removeObject(this);
             }
         }
     }
-    
 }
