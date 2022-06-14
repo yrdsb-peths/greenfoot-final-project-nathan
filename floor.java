@@ -24,7 +24,6 @@ public class floor extends Actor
             removeTouching(tree.class);
             MyWorld world = (MyWorld) getWorld();
             world.createTree();
-            world.increaseScore();
         }
     }   
     public void killrock()
@@ -34,6 +33,7 @@ public class floor extends Actor
             removeTouching(Rock.class);
             MyWorld world = (MyWorld) getWorld();
             world.createRock();
+            world.increaseScore();
         }
     }   
 }

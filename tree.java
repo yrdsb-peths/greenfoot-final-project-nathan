@@ -16,14 +16,21 @@ public class tree extends Actor
     {
         MyWorld world = (MyWorld) getWorld();
         int score = world.getScore();
-        GreenfootSound carCrash = new GreenfootSound("car-crash2.mp3");
         if (score<=10)
         {
             setLocation(getX(), getY()+3);
         }
-        else
+        if (score<=20 && score>=10)
         {
             setLocation(getX(), getY()+6);
+        }
+        if (score<=30 && score>=20)
+        {
+            setLocation(getX(), getY()+12);
+        }
+        if (score>=30)
+        {
+            setLocation(getX(), getY()+24);
         }
         world.setABoolean(false);
         boolean gameover = world.getABoolean();
@@ -32,12 +39,8 @@ public class tree extends Actor
             world.removeObject(this);
             world.gameOver();
             world.setABoolean(true);
-            carCrash.play();
+            Greenfoot.playSound("car-crash-sound-eefect");
         }
-        if (gameover == true)
-        {
-            world.removeObject(this);
-            world.gameOver();
-        }
+
     }
 }

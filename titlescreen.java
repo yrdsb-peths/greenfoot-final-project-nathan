@@ -23,6 +23,7 @@ public class titlescreen extends World
         addObject(title, getWidth()/2, 200);
         addObject(control1, getWidth()/2, 250);
         addObject(control2, getWidth()/2, 300);
+        addObject(startgame, getWidth()/2, 350);
     }
     public void act()
     {
