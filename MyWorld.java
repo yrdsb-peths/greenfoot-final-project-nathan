@@ -13,80 +13,68 @@ public class MyWorld extends World
      * Constructor for objects of class MyWorld.
      * 
      */
+    public int score = 0;
+    Label scoreLabel;
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 600, 1); 
-        int[] xarr = {(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104,(Greenfoot.getRandomNumber(5)+1)*104};
-        int[] yarr = {(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64,(Greenfoot.getRandomNumber(5)+1)*64};
-        Counter one = new Counter("1");
-        Counter two = new Counter("2");
-        Counter three = new Counter("3");
-        Counter four = new Counter("4");
-        Counter five = new Counter("5");
-        Counter six = new Counter("6");
-        spawnMine();
-        spawnMine();
-        spawnMine();
-        spawnMine();
-        spawnMine();
-        spawnMine();
-        /*
-        for (int i = 0; i<5;i++)
+        super(400, 600, 1, false); 
+        Car car = new Car();
+        policeCar policecar = new policeCar();
+        addObject(car, 200,400);
+        addObject(policecar, 200, 500);
+        createTree();
+        createTree();
+        createRock();
+        for (int i = 0; i<50;i++)
         {
-            spawnPlate(i*104+90, 90);
+            int x = i*10;
+            createFloor(x,600);
         }
-        for (int i = 0; i<5;i++)
-        {
-            spawnPlate(i*104+90, 194);
-        }
-        for (int i = 0; i<5;i++)
-        {
-            spawnPlate(i*104+90, 298);
-        }
-        for (int i = 0; i<5;i++)
-        {
-            spawnPlate(i*104+90, 402);
-        }
-        for (int i = 0; i<5;i++)
-        {
-            spawnPlate(i*104+90, 506);
-        }
-        */
-        for (int i=0;i<5;i++)
-        {
-            spawndigit(i*104+90, 90);
-        }
+        scoreLabel = new Label(0, 50);
+        addObject(scoreLabel, 20, 20);
     }
-    public void spawnMine()
+    public void createTree()
     {
-        Mine mine = new Mine("BOOM", 20);
-        int x = (Greenfoot.getRandomNumber(5))*104+90;
-        int y = (Greenfoot.getRandomNumber(5))*104+90;
-        addObject(mine, x, y);
+        tree tree = new tree();
+        int x = Greenfoot.getRandomNumber(2);
+        int y = 0;
+        addObject(tree, x*300+50, y);
     }
-    public void spawndigit(int x,int y)
+    public void createRock()
     {
-        mine0 zero = new mine0(" ",0);
-        zero.checkmine();
-        addObject(zero, x, y);
+        Rock rock = new Rock();
+        int x = Greenfoot.getRandomNumber(3);
+        int y = 0;
+        int [] xarr = {200,100,300};
+        addObject(rock, xarr[x], y);
     }
-    public void spawnnum()
+    public void createFloor(int x, int y)
     {
-        for (int i = 0; i<5;i++)
-        {
-            spawndigit(i*104+90,64);
-        }
-    }
-    public void spawnPlate(int x, int y)
-    {
-        counter2 plate = new counter2(" ");
-        addObject(plate,x,y);
+        floor floor=  new floor();
+        addObject(floor, x, y);
     }
     public void gameOver()
     {
-        Label gameOverLabel = new Label("Game Over", 100);
-        addObject(gameOverLabel, 300, 200);
+        Label gameOverLabel = new Label("Game Over", 75);
+        addObject(gameOverLabel, 200, 200);
     }
-    
+    private boolean gamecheck = false;
+    public boolean getABoolean()
+    {
+        return gamecheck;
+    }
+    public void setABoolean(boolean gamecheck)
+    {
+        this.gamecheck = gamecheck;
+    }
+    public void increaseScore()
+    {
+        score++;
+        scoreLabel.setValue(score);
+    }
+    public int getScore()
+    {
+        return score;
+    }
 }

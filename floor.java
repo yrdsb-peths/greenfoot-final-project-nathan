@@ -19,11 +19,12 @@ public class floor extends Actor
     }
     public void killtree()
     {
-        if(isTouching(Tree.class))
+        if(isTouching(tree.class))
         {
-            removeTouching(Tree.class);
+            removeTouching(tree.class);
             MyWorld world = (MyWorld) getWorld();
             world.createTree();
+            world.increaseScore();
         }
     }   
     public void killrock()

@@ -25,12 +25,6 @@ public class Car extends Actor
     }
     public void eat()
     {
-        if(isTouching(Tree.class))
-        {
-            MyWorld world = (MyWorld) getWorld();
-            world.gameOver();
-            world.removeObject(this);
-        }
         if(isTouching(Rock.class))
         {
             MyWorld world = (MyWorld) getWorld();
@@ -38,4 +32,9 @@ public class Car extends Actor
             world.removeObject(this);
         }
     } 
+    public int getcarx()
+    {
+        int carx = getX();
+        return carx;
+    }
 }
