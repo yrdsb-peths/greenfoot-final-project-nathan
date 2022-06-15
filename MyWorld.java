@@ -67,15 +67,6 @@ public class MyWorld extends World
         addObject(gameOverLabel, 200, 200);
         gameOver=true;
     }
-    private boolean gamecheck = false;
-    public boolean getABoolean()
-    {
-        return gamecheck;
-    }
-    public void setABoolean(boolean gamecheck)
-    {
-        this.gamecheck = gamecheck;
-    }
     public void increaseScore()
     {
         score++;

@@ -37,19 +37,11 @@ public class Rock extends Actor
         {
             setLocation(getX(), getY()+48);
         }
-        world.setABoolean(false);
-        boolean gameover = world.getABoolean();
         if (isTouching(Car.class))
         {
             world.removeObject(this);
             world.gameOver();
-            world.setABoolean(true);
             crash.play();
-        }
-        if (gameover == true)
-        {
-            world.removeObject(this);
-            world.gameOver();
         }
     }
 }
