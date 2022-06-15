@@ -16,6 +16,7 @@ public class Rock extends Actor
     {
         MyWorld world = (MyWorld) getWorld();
         int score = world.getScore();
+        GreenfootSound crash = new GreenfootSound("car-crash-sound-eefect.mp3");
         if (score<=10)
         {
             setLocation(getX(), getY()+3);
@@ -28,9 +29,13 @@ public class Rock extends Actor
         {
             setLocation(getX(), getY()+12);
         }
-        if (score>=30)
+        if (score<40 &&score>=30)
         {
             setLocation(getX(), getY()+24);
+        }
+        if (score>40)
+        {
+            setLocation(getX(), getY()+48);
         }
         world.setABoolean(false);
         boolean gameover = world.getABoolean();
@@ -39,7 +44,7 @@ public class Rock extends Actor
             world.removeObject(this);
             world.gameOver();
             world.setABoolean(true);
-            Greenfoot.playSound("car-crash-sound-eefect");
+            crash.play();
         }
         if (gameover == true)
         {

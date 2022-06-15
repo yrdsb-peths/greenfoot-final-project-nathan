@@ -15,10 +15,12 @@ public class MyWorld extends World
      */
     public int score = 0;
     Label scoreLabel;
+    boolean gameOver = false;
+    GreenfootSound bgm = new GreenfootSound("Bali v2.mp3");
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(400, 600, 1, false); 
+        super(400, 600, 1, true); 
         Car car = new Car();
         policeCar policecar = new policeCar();
         addObject(car, 200,400);
@@ -34,19 +36,24 @@ public class MyWorld extends World
         scoreLabel = new Label(0, 50);
         addObject(scoreLabel, 20, 20);
     }
+    public void act()
+    {
+        bgm.play();
+    }
     public void createTree()
     {
         tree tree = new tree();
-        int x = Greenfoot.getRandomNumber(2);
+        int x = Greenfoot.getRandomNumber(4);
+        int [] xarr = {25,50, 325,375};
         int y = 0;
-        addObject(tree, x*300+50, y);
+        addObject(tree, xarr[x], y);
     }
     public void createRock()
     {
         Rock rock = new Rock();
-        int x = Greenfoot.getRandomNumber(3);
+        int x = Greenfoot.getRandomNumber(5);
         int y = 0;
-        int [] xarr = {200,100,300};
+        int [] xarr = {100,150,200,250,300};
         addObject(rock, xarr[x], y);
     }
     public void createFloor(int x, int y)
@@ -58,6 +65,7 @@ public class MyWorld extends World
     {
         Label gameOverLabel = new Label("Game Over", 75);
         addObject(gameOverLabel, 200, 200);
+        gameOver=true;
     }
     private boolean gamecheck = false;
     public boolean getABoolean()
